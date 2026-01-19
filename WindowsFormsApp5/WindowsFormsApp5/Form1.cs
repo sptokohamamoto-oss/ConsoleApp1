@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp4
@@ -16,16 +9,23 @@ namespace WindowsFormsApp4
         {
             InitializeComponent();
 
-        }
-        private void textBox1_keyPress(object sender,KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 'b')
-            {
-                e.Handled = true;          
+            // 入力制限イベントを登録
+            textBox1.KeyPress += textBox1_KeyPress;
 
+            // ボタンクリックイベントを登録
+            button1.Click += button1_Click;
+        }
+
+        // 数値のみ入力可能にする
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true;
             }
         }
 
+        // ボタン押下時の処理
         private void button1_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(textBox1.Text, out int value))
@@ -45,13 +45,6 @@ namespace WindowsFormsApp4
                 label1.Text = "5以上　2の倍数";
             else
                 label1.Text = "5以上　2の倍数ではない";
-        }
-       
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
