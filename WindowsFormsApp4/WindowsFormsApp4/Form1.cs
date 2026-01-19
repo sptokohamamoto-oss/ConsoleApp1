@@ -17,7 +17,7 @@ namespace WindowsFormsApp4
             InitializeComponent();
 
         }
-        private void textBox1_keyPress(object sender,KeyPressEventArgs e)
+        private void TextBox1_keyPress(object sender,KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
             {
@@ -26,7 +26,7 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(textBox1.Text, out int value))
             {
@@ -49,7 +49,7 @@ namespace WindowsFormsApp4
        
         
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
