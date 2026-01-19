@@ -19,7 +19,7 @@ namespace WindowsFormsApp4
         }
         private void textBox1_keyPress(object sender,KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 'b')
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
             {
                 e.Handled = true;          
 
