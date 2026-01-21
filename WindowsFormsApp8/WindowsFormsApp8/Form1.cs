@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp8
 {
@@ -14,7 +13,6 @@ namespace WindowsFormsApp8
             InitializeComponent();
 
             this.Text = "Form①";
-            this.Icon = SystemIcons.Application;
 
             timer1.Interval = 1000;
             timer1.Start();
@@ -23,14 +21,14 @@ namespace WindowsFormsApp8
 
         private void label1_Click(object sender, EventArgs e)
         {
-            label1.Text = "ファイル選択:";
+            label1.Text = "ファイル選択：";
             label1.ForeColor = Color.Black;
 
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-            label2.Text = "ファイル内容:";
+            label2.Text = "ファイル内容：";
             label2.ForeColor = Color.Black;
 
         }
@@ -49,7 +47,7 @@ namespace WindowsFormsApp8
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Title = "開くファイルを選択してください";
+                ofd.Title = Message_manage.Title1;
                 ofd.Filter = "すべてのファイル (*.*)|*.*";
 
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -64,37 +62,53 @@ namespace WindowsFormsApp8
         {
             try
             {
+                if (!File.Exists(textBox1.Text))
+                {
+                    throw new FileNotFoundException();
+                }
                 label3.Text = File.ReadAllText(textBox1.Text);
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show(
-                    "ファイルを読み込めません\n" + ex.Message,
-                    "エラー",
+                    Message_manage.Msg2,
+                    Message_manage.Title4,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-        }
 
+        }
         private void button3_Click(object sender, EventArgs e)
         {
-            button3.Text = "PUSH";
-            button3.ForeColor = Color.White;
-            button3.BackColor = Color.Gray;
+            DialogResult result = MessageBox.Show(
+                Message_manage.Msg1,
+                Message_manage.Title3,
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question);
 
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Close();
+            if (result == DialogResult.OK)
+            {
+                Form2 form2 = new Form2(label3.Text);
+
+                if (form2.ShowDialog() == DialogResult.OK)
+                {
+                    label4.Text = form2.ResultText;
+                }
+            }
         }
+          
         private void button8_Click(object sender, EventArgs e)
         {
-            button8.Text = "PUSH";
-            button8.ForeColor = Color.White;
-            button8.BackColor = Color.Gray;
-
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show(
+                Message_manage.Msg1,
+                Message_manage.Title3,
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                Form3 form3 = new Form3();
+                form3.ShowDialog();
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -133,25 +147,29 @@ namespace WindowsFormsApp8
         {
             try
             {
+                if (!File.Exists(textBox1.Text)) 
+                {
+                    throw new FileNotFoundException();
+                }
                 File.WriteAllText(textBox1.Text, label4.Text);
 
                 MessageBox.Show(
-                    "ファイルを更新しました",
-                    "完了",
+                    Message_manage.Msg3,
+                    Message_manage.Title2,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "ファイルを更新できません\n" + ex.Message,
-                    "エラー",
+                    Message_manage.Msg2,
+                    Message_manage.Title4,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
 
-        private void label5_Click(object sender, EventArgs e) 
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
@@ -166,8 +184,8 @@ namespace WindowsFormsApp8
         {
             using (LinearGradientBrush brush =
                 new LinearGradientBrush(label5.ClientRectangle,
-                                        Color.LightBlue,
-                                        Color.LightPink,
+                                        Color.White,
+                                        Color.Blue,
                                         90F))
             {
                 e.Graphics.FillRectangle(brush, label5.ClientRectangle);
@@ -183,8 +201,8 @@ namespace WindowsFormsApp8
 
 
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
     }
 }
-
-
-       
