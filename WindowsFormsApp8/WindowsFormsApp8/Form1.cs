@@ -88,15 +88,16 @@ namespace WindowsFormsApp8
 
             if (result == DialogResult.OK)
             {
-                Form2 form2 = new Form2(label3.Text);
+                Form4 form4 = new Form4();
+                form4.InputText = label3.Text;
 
-                if (form2.ShowDialog() == DialogResult.OK)
+                if (form4.ShowDialog() == DialogResult.OK)
                 {
-                    label4.Text = form2.ResultText;
+                    label4.Text = form4.ResultText;
                 }
             }
         }
-          
+
         private void button8_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -106,8 +107,8 @@ namespace WindowsFormsApp8
                 MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
-                Form3 form3 = new Form3();
-                form3.ShowDialog();
+                Form2 form2 = new Form2();
+                form2.ShowDialog();
             }
         }
 
@@ -147,7 +148,7 @@ namespace WindowsFormsApp8
         {
             try
             {
-                if (!File.Exists(textBox1.Text)) 
+                if (!File.Exists(textBox1.Text))
                 {
                     throw new FileNotFoundException();
                 }
@@ -159,7 +160,7 @@ namespace WindowsFormsApp8
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show(
                     Message_manage.Msg2,
@@ -204,5 +205,11 @@ namespace WindowsFormsApp8
         private void Form1_Load(object sender, EventArgs e)
         {
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
+
