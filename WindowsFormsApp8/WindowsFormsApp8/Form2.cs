@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp8
@@ -8,17 +7,18 @@ namespace WindowsFormsApp8
     public partial class Form2 : Form
     {
 
+
         public Form2()
         {
             InitializeComponent();
         }
         string[] DaysArray = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-        string[] YearsArray = { "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.","Jul.", "Aug.", "Sep.", "Oct.",  "Nov.", "Dec." };
-        RadioButton[] dayRadios;
+        string[] YearsArray = { "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec." };
+
+        private RadioButton[] dayRadios;
         private void Form2_Load(object sender, EventArgs e)
         {
             this.Text = "Form③";
-
 
             dayRadios = new RadioButton[]
              {
@@ -39,24 +39,21 @@ namespace WindowsFormsApp8
             label1.Text = "Days";
             label2.Text = "Days";
 
-            try
+            string path = "cat_mikeneko2.png";
+
+            if (System.IO.File.Exists(path))
             {
-                var path = "cat_mikeneko2.png";
-                if (System.IO.File.Exists(path))
-                {
-                    pictureBox1.BackgroundImage = Image.FromFile(path);
-                    pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-                }
-                else
-                {
-                    MessageBox.Show("画像ファイルが見つかりません。");
-                }
+                panel5.BackgroundImage = Image.FromFile(path);
+                panel5.BackgroundImageLayout = ImageLayout.Zoom;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("画像の読み込みに失敗しました。");
+                MessageBox.Show("画像ファイルが見つかりません。");
             }
+
+            UpdateButtonState();
         }
+
         private void DayRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -142,7 +139,7 @@ namespace WindowsFormsApp8
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             UpdateButtonState();
-            
+
         }
 
         private void button1_MouseEnter(object sender, EventArgs e)
@@ -163,16 +160,16 @@ namespace WindowsFormsApp8
         {
             if (radioButton10.Checked)
             {
-                pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+                panel5.BackgroundImageLayout = ImageLayout.Zoom;
             }
 
             else if (radioButton11.Checked)
             {
-                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+                panel5.BackgroundImageLayout = ImageLayout.Stretch;
             }
             else if (radioButton12.Checked)
             {
-                pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+                panel5.BackgroundImageLayout = ImageLayout.Center;
             }
         }
         private void button1_Click_1(object sender, EventArgs e)
@@ -186,3 +183,7 @@ namespace WindowsFormsApp8
         }
     }
 }
+
+      
+    
+
