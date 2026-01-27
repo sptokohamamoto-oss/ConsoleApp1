@@ -39,7 +39,7 @@ namespace WindowsFormsApp8
             label1.Text = "Days";
             label2.Text = "Days";
 
-            string path = "cat_mikeneko2.png";
+            string path = "Resources/cat_mikeneko2.png";
 
             if (System.IO.File.Exists(path))
             {

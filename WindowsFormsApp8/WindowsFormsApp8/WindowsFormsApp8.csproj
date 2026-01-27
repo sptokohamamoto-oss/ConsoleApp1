@@ -106,7 +106,9 @@
     <None Include="Resources\pet_cat_sit-100x100.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cat_mikeneko2.png" />
+    <Content Include="Resources\cat_mikeneko2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
