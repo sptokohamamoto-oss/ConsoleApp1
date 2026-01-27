@@ -13,9 +13,8 @@ namespace WindowsFormsApp8
             InitializeComponent();
         }
         string[] DaysArray = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-        string[] YearsArray = { " Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Sep.", "Oct.", "Aug.", "Nov.", "Dec." };
+        string[] YearsArray = { "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.","Jul.", "Aug.", "Sep.", "Oct.",  "Nov.", "Dec." };
         RadioButton[] dayRadios;
-        CheckBox[] checkBoxes;
         private void Form2_Load(object sender, EventArgs e)
         {
             this.Text = "Form③";
@@ -40,18 +39,25 @@ namespace WindowsFormsApp8
             label1.Text = "Days";
             label2.Text = "Days";
 
-            
-            pictureBox1.BackgroundImage = Image.FromFile("cat_mikeneko2.png");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom; 
-
+            try
+            {
+                var path = "cat_mikeneko2.png";
+                if (System.IO.File.Exists(path))
+                {
+                    pictureBox1.BackgroundImage = Image.FromFile(path);
+                    pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+                }
+                else
+                {
+                    MessageBox.Show("画像ファイルが見つかりません。");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("画像の読み込みに失敗しました。");
+            }
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void DayRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
             if (rb != null && rb.Checked)
@@ -59,63 +65,6 @@ namespace WindowsFormsApp8
                 label1.Text = rb.Text;
             }
         }
-
-
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null && rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null && rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null && rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null && rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null && rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb != null && rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
@@ -140,7 +89,6 @@ namespace WindowsFormsApp8
                 label2.Text = "Years";
             }
         }
-
         private void radioButton9_CheckedChanged(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
@@ -165,7 +113,6 @@ namespace WindowsFormsApp8
                 label2.Text = "Years";
             }
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem != null)
@@ -174,18 +121,6 @@ namespace WindowsFormsApp8
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb.Checked)
-            {
-                label1.Text = rb.Text;
-            }
-        }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void UpdateButtonState()
         {
             button1.Enabled =
@@ -222,14 +157,6 @@ namespace WindowsFormsApp8
             button1.BackColor = Color.Yellow;
             button1.ForeColor = Color.Black;
             button1.Cursor = Cursors.Default;
-
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-            
-
         }
 
         private void radioButton10_CheckedChanged(object sender, EventArgs e)
@@ -247,22 +174,7 @@ namespace WindowsFormsApp8
             {
                 pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             }
-
         }
-
-
-        private void radioButton11_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton12_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show(
@@ -271,11 +183,6 @@ namespace WindowsFormsApp8
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                         );
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

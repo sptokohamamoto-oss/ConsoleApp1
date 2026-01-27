@@ -33,16 +33,6 @@ namespace WindowsFormsApp8
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -62,13 +52,9 @@ namespace WindowsFormsApp8
         {
             try
             {
-                if (!File.Exists(textBox1.Text))
-                {
-                    throw new FileNotFoundException();
-                }
-                label3.Text = File.ReadAllText(textBox1.Text);
+                label3.Text = File.ReadAllText(textBox1.Text);   
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show(
                     Message_manage.Msg2,
@@ -114,7 +100,6 @@ namespace WindowsFormsApp8
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.Text = "Form2 ソースコード（返却値）";
             this.groupBox1.Location = new System.Drawing.Point(20, 250);
             this.groupBox1.Size = new System.Drawing.Size(500, 250);
@@ -122,15 +107,10 @@ namespace WindowsFormsApp8
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
             label4.BackColor = Color.Yellow;
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -141,7 +121,6 @@ namespace WindowsFormsApp8
         private void button6_Click(object sender, EventArgs e)
         {
             label4.BackColor = Color.Blue;
-
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -160,7 +139,7 @@ namespace WindowsFormsApp8
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 MessageBox.Show(
                     Message_manage.Msg2,
@@ -169,12 +148,6 @@ namespace WindowsFormsApp8
                     MessageBoxIcon.Error);
             }
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             label5.Text = DateTime.Now.ToString("HH:mm:ss");
@@ -199,17 +172,6 @@ namespace WindowsFormsApp8
                 label5.ClientRectangle,
                 Color.Black,
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
-
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
-

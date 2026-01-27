@@ -76,7 +76,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(205, 205);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -87,7 +86,6 @@
             this.label1.Size = new System.Drawing.Size(31, 12);
             this.label1.TabIndex = 7;
             this.label1.Text = "Days";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // radioButton7
             // 
@@ -99,7 +97,7 @@
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "Sun";
             this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -111,7 +109,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Sat";
             this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -123,7 +121,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Fri";
             this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -135,7 +133,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Thu";
             this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -147,7 +145,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Wed";
             this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -159,7 +157,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Tue";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -171,7 +169,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Mon";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.DayRadio_CheckedChanged);
             // 
             // panel2
             // 
@@ -194,7 +192,6 @@
             this.label2.Size = new System.Drawing.Size(31, 12);
             this.label2.TabIndex = 3;
             this.label2.Text = "Days";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // comboBox1
             // 
@@ -310,7 +307,6 @@
             this.radioButton12.TabStop = true;
             this.radioButton12.Text = "Center";
             this.radioButton12.UseVisualStyleBackColor = true;
-            this.radioButton12.CheckedChanged += new System.EventHandler(this.radioButton12_CheckedChanged);
             // 
             // radioButton11
             // 
@@ -322,7 +318,6 @@
             this.radioButton11.TabStop = true;
             this.radioButton11.Text = "Stretch";
             this.radioButton11.UseVisualStyleBackColor = true;
-            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton11_CheckedChanged);
             // 
             // radioButton10
             // 
@@ -343,7 +338,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(72, 100);
             this.panel6.TabIndex = 0;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // pictureBox1
             // 
@@ -354,7 +348,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(69, 97);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form2
             // 

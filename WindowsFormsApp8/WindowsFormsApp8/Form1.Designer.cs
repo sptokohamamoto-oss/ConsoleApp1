@@ -65,7 +65,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(531, 127);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
             // 
             // button3
             // 
@@ -106,7 +106,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(145, 18);
             this.label3.TabIndex = 3;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox1
             // 
@@ -114,7 +113,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(155, 19);
             this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -153,7 +151,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(191, 12);
             this.label4.TabIndex = 0;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button4
             // 
@@ -208,7 +205,6 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "00:00:00";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             this.label5.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelTime_Paint);
             // 
             // button8
@@ -242,7 +238,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form①";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
