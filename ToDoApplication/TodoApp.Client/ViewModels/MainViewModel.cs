@@ -80,7 +80,6 @@ namespace TodoApp.Client.ViewModels
             OnPropertyChanged(nameof(ActiveCount));
         }
 
-
         // 新規登録
         private async Task OnAddAsync()
         {
