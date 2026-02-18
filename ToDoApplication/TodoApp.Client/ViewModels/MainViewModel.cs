@@ -144,9 +144,7 @@ namespace TodoApp.Client.ViewModels
             UpdateCounts();
         }
 
-        // =========================
         // 更新処理
-        // =========================
         private async Task UpdateAsync(TodoItem item)
         {
             await _todoApi.UpdateAsync(item.Id, item);
