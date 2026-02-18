@@ -33,7 +33,7 @@ namespace TodoApp.Client.ViewModels
             {
                 _selectedFilter = value;
                 OnPropertyChanged();
-                _ = LoadAsync(); 
+                _ = LoadAsync();
             }
         }
 
@@ -90,7 +90,7 @@ namespace TodoApp.Client.ViewModels
             if (dialog.ShowDialog() == true)
                 await CreateAsync(vm.Item);
         }
-        
+
         // 編集
         private async Task OnEditAsync()
         {
