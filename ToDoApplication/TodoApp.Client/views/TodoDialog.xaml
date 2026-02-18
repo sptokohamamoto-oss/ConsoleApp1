@@ -1,0 +1,88 @@
+﻿<Window x:Class="TodoApp.Client.Views.TodoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ToDo登録" Height="350" Width="450"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- タイトル -->
+            <RowDefinition Height="Auto"/>
+            <!-- タイトル入力 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 詳細説明 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 詳細説明入力 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 期限日・優先度 -->
+            <RowDefinition Height="*"/>
+            <!-- 空白 -->
+            <RowDefinition Height="Auto"/>
+            <!-- ボタン -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            
+        </Grid.ColumnDefinitions>
+
+        <!-- タイトル -->
+        <TextBlock Text="タイトル *"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center" Margin="0 0 10 5"/>
+        
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding Title}"
+                 Margin="0 0 0 15" Height="28"/>
+
+        <!-- 詳細説明 -->
+        <TextBlock Text="詳細説明"
+                   Grid.Row="2" Grid.Column="0"
+                   VerticalAlignment="Top" Margin="0 0 10 5"/>
+        
+        <TextBox Grid.Row="3" Grid.Column="1"
+                 Text="{Binding Description}"
+                 Height="80"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 Margin="0 0 0 15"/>
+
+        <!-- 期限日・優先度 -->
+        <StackPanel Grid.Row="4" Grid.Column="1" 
+                    Orientation="Horizontal" Margin="0 0 0 10">
+            
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="期限日"/>
+                <DatePicker SelectedDate="{Binding DueDate}" Width="150"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="優先度"/>
+                <ComboBox SelectedValue="{Binding Priority}"
+                          SelectedValuePath="Tag"
+                          Width="100">
+                    <ComboBoxItem Content="高" Tag="1"/>
+                    <ComboBoxItem Content="中" Tag="2"/>
+                    <ComboBoxItem Content="低" Tag="3"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- ボタン -->
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="キャンセル" Width="90" Margin="0 0 10 0"
+                    IsCancel="True"/>
+            <Button Content="保存" Width="90"
+                    IsDefault="True"
+                    Click="OnOK"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
+    

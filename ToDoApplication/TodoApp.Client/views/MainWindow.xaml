@@ -1,0 +1,117 @@
+﻿<Window x:Class="TodoApp.Client.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoApp.Client.ViewModels"
+        mc:Ignorable="d"
+        Title="ToDoアプリケーション" Height="469" Width="891">
+
+    <DockPanel Margin="10">
+
+        <!-- 上部コマンドバー -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0 0 0 10">
+            <Button Content="＋ 新規登録" Width="120" Margin="0 0 10 0"
+                    Command="{Binding AddCommand}" />
+
+            <TextBlock Text="フィルタ:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+
+            <ComboBox Width="120"
+                      SelectedValue="{Binding SelectedFilter}"
+                      SelectedValuePath="Tag">
+                <ComboBoxItem Content="すべて" Tag="All"/>
+                <ComboBoxItem Content="未完了" Tag="Active"/>
+                <ComboBoxItem Content="完了" Tag="Completed"/>
+            </ComboBox>
+
+            <Button Content="更新" Width="80" Margin="10 0 0 0"
+                    Command="{Binding LoadCommand}" />
+        </StackPanel>
+
+        <!-- ステータスバ- -->
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="全{0}件（完了：{1}件／未完了：{2}件）">
+                            <Binding Path="TodoItems.Count"/>
+                            <Binding Path="CompletedCount"/>
+                            <Binding Path="ActiveCount"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+
+
+        <DataGrid ItemsSource="{Binding TodoItems}"
+                  SelectedItem="{Binding SelectedItem}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  HeadersVisibility="Column"
+                  Margin="0 0 0 10">
+
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="完了" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsCompleted, Mode=TwoWay}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Command="{Binding DataContext.ToggleCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                      CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="タイトル" Binding="{Binding Title}" Width="*"/>
+
+                <DataGridTextColumn Header="期限" Binding="{Binding DueDate, StringFormat=yyyy/MM/dd}" Width="120"/>
+
+                <DataGridTemplateColumn Header="優先度" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="高"/>
+                                        <Style.Triggers>
+
+                                            <DataTrigger Binding="{Binding Priority}" Value="1">
+                                                <Setter Property="Text" Value="高"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding Priority}" Value="2">
+                                                <Setter Property="Text" Value="中"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding Priority}" Value="3">
+                                                <Setter Property="Text" Value="低"/>
+                                            </DataTrigger>
+
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="操作" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Content="✎" Width="40" Margin="0 0 5 0"
+                                        Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                <Button Content="🗑" Width="40"
+                                        Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
+</Window>
